@@ -1,150 +1,146 @@
-/* === GERAL / LAYOUT FIXO (mantém proporções idênticas no mobile) === */
-html {
-    scroll-behavior: smooth;
-    overflow-x: auto; /* permite rolagem horizontal no mobile */
+/* === BASE / LAYOUT ESCALÁVEL === */
+/* A ideia: container que fica até 1100px no desktop e encolhe proporcionalmente até ocupar quase toda a largura do celular */
+:root{
+  /* valores base que escalam com viewport */
+  --site-max-width: 1100px;
+  --site-side-gap: 2.5%;             /* distância das bordas internas em porcentagem */
+  --title-size-desktop: 48px;
+  --p-size-desktop: 32px;
 }
 
-body {
-    background-color: #f5aeae;
-    font-family: Arial, sans-serif;
-    margin: 0 auto;           /* centraliza */
-    padding: 0;
-    width: 1100px;            /* largura fixa */
-    min-width: 1100px;        /* não encolhe abaixo disso */
-    position: relative;       /* usado como referência para balões absolutos */
-    overflow-x: visible;
+/* Reset simples */
+*{box-sizing:border-box}
+html{height:100%}
+body{
+  margin:0;
+  min-height:100%;
+  background:#f5aeae;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* === HEADER === */
-.header {
-    background-color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 30px;
-    margin: 20px auto;
-    width: 1100px; /* mesma largura do body */
-    position: relative; /* para bolos posicionados dentro do header */
-    overflow: hidden;
-    min-height: 220px; /* garante espaço para bolos */
+/* Site wrap centralizado que escala */
+.site-wrap{
+  width: min(var(--site-max-width), 95vw); /* encolhe proporcionalmente em telas pequenas */
+  margin: 0 auto;
+  position: relative; /* referência para balloons posicionados relativamente ao site */
+  padding-bottom: 3.5rem; /* espaço para balões no rodapé (se necessário) */
 }
 
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #6b0303;
-    font-family: 'HappyBirthday', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(12,12,12,0.3);
-    padding: 20px;
-    background-color: #f5aeae;
-    border-radius: 30px;
+/* HEADER */
+.header{
+  background:#fff;
+  border-radius:30px;
+  padding: clamp(12px, 2.2vw, 28px); /* padding escala com viewport */
+  margin: 20px 0;
+  position: relative; /* referencia para os bolos */
+  overflow: visible;
+  min-height: clamp(140px, 22vh, 220px); /* garante espaço no topo */
 }
 
-/* === TÍTULO === */
-h1 {
-    font-size: 48px;
-    color: #000000;
-    font-family: 'HappyBirthday', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin: 0;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.header-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding: clamp(10px,1.5vw,20px);
+  background: #f5aeae;
+  border-radius: 22px;
+  color: #6b0303;
+  text-align:center;
 }
 
-/* === CONTEÚDO === */
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto 140px auto; /* espaço inferior extra para não ser coberto pelos balões */
-    padding: 40px 20px;
-    background-color: #ffffff;
-    border-radius: 30px;
-    font-family: 'avenue', Arial, sans-serif;
-    text-align: center;
-    width: 1100px; /* mesma largura fixa */
-    position: relative;
-    min-height: 400px;
+/* TITULO - tamanho escalável com clamp */
+h1{
+  margin:0;
+  padding: clamp(10px,1.6vw,20px);
+  font-family: 'HappyBirthday', Arial, sans-serif;
+  font-size: clamp(26px, 3.6vw, 48px); /* encolhe proporcionalmente */
+  color:#000;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
 }
 
-p {
-    font-size: 32px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    color: #000;
-    margin: 20px 0;
-    line-height: 1.5;
-    padding: 0 20px;
-    border-radius: 30px;
+/* CONTEÚDO */
+.content{
+  background:#fff;
+  border-radius:30px;
+  padding: clamp(20px, 3.5vw, 40px);
+  margin: 20px 0 70px 0; /* margem inferior para que balões não se sobreponham ao texto */
+  text-align:center;
+  position: relative;
 }
 
-.center-gif {
-    width: 220px;
-    max-width: 80%;
-    margin-top: 20px;
+.content p{
+  font-size: clamp(16px, 3vw, 32px); /* escala */
+  margin: 20px 0;
+  line-height:1.4;
+  padding: 0 8px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.18);
 }
 
-/* === BOLOS (topo) - posicionados dentro do header === */
-.birthday-gif {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 180px;
-    pointer-events: none;
-    z-index: 20;
+/* GIF central */
+.center-gif{
+  width: clamp(120px, 20vw, 260px);
+  max-width: 80%;
+  margin-top: 18px;
 }
 
-.birthday-gif2 {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 180px;
-    pointer-events: none;
-    z-index: 20;
+/* === CAKES (bolos) ===
+   Posicionados em relação ao .header (position: absolute dentro do header).
+   Offsets em % para manter proporção do container. */
+.cake{
+  position: absolute;
+  top: calc(var(--site-side-gap) * 1); /* ex: ~2.5% do container */
+  width: clamp(80px, 12.5vw, 180px);
+  pointer-events: none;
+  transform-origin: center;
+  z-index: 40;
 }
 
-/* === BALÕES (rodapé) - posicionados em relação ao BODY, sempre nos cantos === */
-.birthday-gif3 {
-    position: absolute;   /* relativo ao <body> (que tem position:relative) */
-    bottom: 10px;
-    left: 10px;
-    width: 180px;
-    z-index: 9999;
-    pointer-events: none;
+/* canto direito / esquerdo (dentro do header) */
+.cake-right{ right: calc(var(--site-side-gap) * 1); }
+.cake-left{ left: calc(var(--site-side-gap) * 1); }
+
+/* === BALÕES (rodapé do site) ===
+   Posicionados em relação ao .site-wrap (container). Offsets em % / clamp para escala */
+.balloon{
+  position: absolute; /* relativo ao .site-wrap */
+  bottom: calc(var(--site-side-gap) * 1); /* distancia do fundo do container */
+  width: clamp(80px, 12.5vw, 180px);
+  pointer-events: none;
+  z-index: 9999; /* por cima de todo conteúdo */
+  transform-origin: center;
 }
 
-.birthday-gif4 {
-    position: absolute;   /* relativo ao <body> */
-    bottom: 10px;
-    right: 10px;
-    width: 180px;
-    z-index: 9999;
-    pointer-events: none;
+/* cada um no seu canto, em % para manter proporção */
+.balloon-left{
+  left: calc(var(--site-side-gap) * 1);   /* ~2.5% do container */
+}
+.balloon-right{
+  right: calc(var(--site-side-gap) * 1);
 }
 
-/* === FONTES PERSONALIZADAS (mantém suas fontes) === */
+/* Pequenas melhorias visuais: sombra suave para separar do fundo */
+.balloon,
+.cake{ filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); }
+
+/* === RESPONSIVENESS / PONTOS FINOS ===
+   A combinação de min() / clamp() / % / vw faz o layout escalar proporcionalmente. */
+
+/* Se quiser forçar ainda mais preenchimento na largura muito pequena, aumenta padding reduzido */
+@media (max-width: 380px){
+  .site-wrap{ width: 96vw; } /* ocupa mais da tela em telefones muito pequenos */
+  .content{ margin-bottom: 90px; } /* garante espaço para os balloons */
+}
+
+/* Fonte-face (se tiver os arquivos de fonte) */
 @font-face {
-    font-family: 'HappyBirthday';
-    src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
+  font-family: 'HappyBirthday';
+  src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
 }
-
 @font-face {
-    font-family: 'avenue';
-    src: url('fonts/Avenue de Madison.ttf') format('truetype');
+  font-family: 'avenue';
+  src: url('fonts/Avenue de Madison.ttf') format('truetype');
 }
-
-/* === DICA: se quiser encolher as imagens no mobile, descomente o bloco abaixo ===
-   (mas pelo que pediu, deixei tudo fixo para manter as mesmas proporções) */
-
-/*
-@media (max-width: 420px) {
-    .birthday-gif,
-    .birthday-gif2,
-    .birthday-gif3,
-    .birthday-gif4 {
-        width: 120px;
-    }
-    h1 { font-size: 36px; }
-    p  { font-size: 22px; }
-}
-*/
