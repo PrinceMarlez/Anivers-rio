@@ -8,7 +8,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    position: relative;
+    position: relative; /* para os balões ficarem presos ao site */
 }
 
 /* === HEADER === */
@@ -53,7 +53,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px auto;
+    margin: 20px auto 120px auto; /* 120px extra para não cobrir o texto */
     padding: 40px 20px;
     background-color: #ffffff;
     border-radius: 30px;
@@ -97,7 +97,7 @@ p {
     pointer-events: none;
 }
 
-/* === BALÕES (rodapé, sobre conteúdo) === */
+/* === BALÕES (rodapé) === */
 .birthday-gif3 {
     position: absolute;
     bottom: 10px;
@@ -139,6 +139,4 @@ p {
     .birthday-gif2,
     .birthday-gif3,
     .birthday-gif4 {
-        width: 100px;
-    }
-}
+        width: 100px; /* imagens menores no*
