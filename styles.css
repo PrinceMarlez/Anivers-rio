@@ -8,8 +8,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: auto; /* permite rolagem horizontal em telas menores */
-    position: relative; /* importante: para posicionamento absolute relativo ao site */
+    position: relative;
 }
 
 /* === HEADER === */
@@ -19,10 +18,10 @@ body {
     text-align: center;
     border-radius: 30px;
     margin: 20px auto;
-    width: 1100px; /* largura fixa */
-    position: relative; /* para que os bolos (inside header) fiquem relativos ao header */
+    width: 90%;
+    max-width: 1100px;
+    position: relative;
     overflow: hidden;
-    min-height: 220px; /* garante espaço vertical para os bolos no topo */
 }
 
 .header-content {
@@ -60,9 +59,9 @@ h1 {
     border-radius: 30px;
     font-family: 'avenue', Arial, sans-serif;
     text-align: center;
-    width: 1100px; /* largura fixa */
+    width: 90%;
+    max-width: 1100px;
     position: relative;
-    min-height: 400px; /* garante altura */
 }
 
 p {
@@ -75,20 +74,19 @@ p {
     border-radius: 30px;
 }
 
-/* GIF central (opcional) */
 .center-gif {
     width: 220px;
+    max-width: 80%;
     margin-top: 20px;
 }
 
-/* === BOLOS (topo, dentro do header) === */
+/* === BOLOS (topo) === */
 .birthday-gif {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 180px;
     pointer-events: none;
-    z-index: 20; /* abaixo dos balões inferiores, mas acima do header */
 }
 
 .birthday-gif2 {
@@ -97,18 +95,15 @@ p {
     left: 10px;
     width: 180px;
     pointer-events: none;
-    z-index: 20;
 }
 
-/* === BALÕES NO RODAPÉ, SOBRE TODO O CONTEÚDO ===
-   Eles são posicionados em relação ao BODY (body tem position: relative)
-   e têm z-index alto para aparecerem por cima de tudo. */
+/* === BALÕES (rodapé, sobre conteúdo) === */
 .birthday-gif3 {
     position: absolute;
     bottom: 10px;
     left: 10px;
     width: 180px;
-    z-index: 9999; /* acima de todo o conteúdo */
+    z-index: 9999;
     pointer-events: none;
 }
 
@@ -117,11 +112,11 @@ p {
     bottom: 10px;
     right: 10px;
     width: 180px;
-    z-index: 9999; /* acima de todo o conteúdo */
+    z-index: 9999;
     pointer-events: none;
 }
 
-/* === FONTES PERSONALIZADAS === */
+/* === FONTES === */
 @font-face {
     font-family: 'HappyBirthday';
     src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
@@ -130,4 +125,20 @@ p {
 @font-face {
     font-family: 'avenue';
     src: url('fonts/Avenue de Madison.ttf') format('truetype');
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+    p {
+        font-size: 20px;
+    }
+    .birthday-gif,
+    .birthday-gif2,
+    .birthday-gif3,
+    .birthday-gif4 {
+        width: 100px;
+    }
 }
