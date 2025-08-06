@@ -1,14 +1,18 @@
-/* === GERAL === */
+/* === GERAL / LAYOUT FIXO (mantém proporções idênticas no mobile) === */
 html {
     scroll-behavior: smooth;
+    overflow-x: auto; /* permite rolagem horizontal no mobile */
 }
 
 body {
     background-color: #f5aeae;
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 0 auto;           /* centraliza */
     padding: 0;
-    position: relative; /* para os balões ficarem presos ao site */
+    width: 1100px;            /* largura fixa */
+    min-width: 1100px;        /* não encolhe abaixo disso */
+    position: relative;       /* usado como referência para balões absolutos */
+    overflow-x: visible;
 }
 
 /* === HEADER === */
@@ -18,10 +22,10 @@ body {
     text-align: center;
     border-radius: 30px;
     margin: 20px auto;
-    width: 90%;
-    max-width: 1100px;
-    position: relative;
+    width: 1100px; /* mesma largura do body */
+    position: relative; /* para bolos posicionados dentro do header */
     overflow: hidden;
+    min-height: 220px; /* garante espaço para bolos */
 }
 
 .header-content {
@@ -31,7 +35,7 @@ body {
     justify-content: center;
     color: #6b0303;
     font-family: 'HappyBirthday', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(12, 12, 12, 0.3);
+    text-shadow: 2px 2px 4px rgba(12,12,12,0.3);
     padding: 20px;
     background-color: #f5aeae;
     border-radius: 30px;
@@ -42,10 +46,10 @@ h1 {
     font-size: 48px;
     color: #000000;
     font-family: 'HappyBirthday', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     margin: 0;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* === CONTEÚDO === */
@@ -53,21 +57,21 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px auto 120px auto; /* 120px extra para não cobrir o texto */
+    margin: 20px auto 140px auto; /* espaço inferior extra para não ser coberto pelos balões */
     padding: 40px 20px;
     background-color: #ffffff;
     border-radius: 30px;
     font-family: 'avenue', Arial, sans-serif;
     text-align: center;
-    width: 90%;
-    max-width: 1100px;
+    width: 1100px; /* mesma largura fixa */
     position: relative;
+    min-height: 400px;
 }
 
 p {
     font-size: 32px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    color: #000000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #000;
     margin: 20px 0;
     line-height: 1.5;
     padding: 0 20px;
@@ -80,13 +84,14 @@ p {
     margin-top: 20px;
 }
 
-/* === BOLOS (topo) === */
+/* === BOLOS (topo) - posicionados dentro do header === */
 .birthday-gif {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 180px;
     pointer-events: none;
+    z-index: 20;
 }
 
 .birthday-gif2 {
@@ -95,11 +100,12 @@ p {
     left: 10px;
     width: 180px;
     pointer-events: none;
+    z-index: 20;
 }
 
-/* === BALÕES (rodapé) === */
+/* === BALÕES (rodapé) - posicionados em relação ao BODY, sempre nos cantos === */
 .birthday-gif3 {
-    position: absolute;
+    position: absolute;   /* relativo ao <body> (que tem position:relative) */
     bottom: 10px;
     left: 10px;
     width: 180px;
@@ -108,7 +114,7 @@ p {
 }
 
 .birthday-gif4 {
-    position: absolute;
+    position: absolute;   /* relativo ao <body> */
     bottom: 10px;
     right: 10px;
     width: 180px;
@@ -116,7 +122,7 @@ p {
     pointer-events: none;
 }
 
-/* === FONTES === */
+/* === FONTES PERSONALIZADAS (mantém suas fontes) === */
 @font-face {
     font-family: 'HappyBirthday';
     src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
@@ -127,16 +133,18 @@ p {
     src: url('fonts/Avenue de Madison.ttf') format('truetype');
 }
 
-/* === RESPONSIVIDADE === */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 32px;
-    }
-    p {
-        font-size: 20px;
-    }
+/* === DICA: se quiser encolher as imagens no mobile, descomente o bloco abaixo ===
+   (mas pelo que pediu, deixei tudo fixo para manter as mesmas proporções) */
+
+/*
+@media (max-width: 420px) {
     .birthday-gif,
     .birthday-gif2,
     .birthday-gif3,
     .birthday-gif4 {
-        width: 100px; /* imagens menores no*
+        width: 120px;
+    }
+    h1 { font-size: 36px; }
+    p  { font-size: 22px; }
+}
+*/

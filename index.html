@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport responsiva -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Força largura fixa (mantém proporções do PC no mobile) -->
+    <meta name="viewport" content="width=1100, initial-scale=1.0">
     <title>Aniversário Michaelly</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,7 +14,7 @@
             <h1>Michaelly</h1>
         </div>
 
-        <!-- Bolos (topo) -->
+        <!-- Bolos (topo, dentro do header) -->
         <img src="src/Animated GIFs graphic.gif" alt="Bolo topo direito" class="birthday-gif">
         <img src="src/Animated GIFs graphic.gif" alt="Bolo topo esquerdo" class="birthday-gif2">
     </div>
@@ -26,10 +26,12 @@
         <p>Com carinho, Prince</p>
 
         <!-- GIF central -->
-        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmV6cDgxczV3OXBjdHQ1bWcwejRzY3NqN3VjdTdvNWZ6dHIxbzNiZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zKSncwDt0kVtMMhGaG/giphy.gif" alt="Aniversário Michaelly" class="center-gif">
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmV6cDgxczV3OXBjdHQ1bWcwejRzY3NqN3VjdTdvNWZ6dHIxbzNiZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zKSncwDt0kVtMMhGaG/giphy.gif"
+             alt="Aniversário Michaelly" class="center-gif">
     </div>
 
-    <!-- Balões (rodapé do site, cada um no canto) -->
+    <!-- Balões (rodapé do site, cada um em seu canto) -->
+    <!-- NOTA: esses estão fora de .header/.content e são posicionados em relação ao <body> -->
     <img src="src/download.gif" alt="Balões inferior esquerdo" class="birthday-gif3">
     <img src="src/download.gif" alt="Balões inferior direito" class="birthday-gif4">
 </body>
