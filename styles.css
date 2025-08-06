@@ -1,61 +1,24 @@
+/* === GERAL === */
+body {
+    background-color: #f5aeae;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* === HEADER === */
 .header {
     background-color: #ffffff;
     padding: 20px;
     text-align: center;
     border-radius: 30px;
-    position: relative;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
     margin: 20px;
-    font-family: Arial, sans-serif;
-    color: #000000;
-  background-color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 30px;
-}
-
-body {
-    background-color: #f5aeae;
-    font-family: Arial, sans-serif;
-}
-
-.birthday-gif {
-    position: absolute; /* necessário para mover com top/left */
-    top: 15px;           /* distância do topo da página */
-    left: 1000px;         /* distância da esquerda */
-
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    max-width: 500px;
-    border-radius: 30px;
-}
-
-.birthday-gif2 {
-    position: absolute; /* necessário para mover com top/left */
-    top: 15px;           /* distância do topo da página */
-    left: 300px;         /* distância da esquerda */
-
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    max-width: 300px;
-    border-radius: 30px;
-}
-
-h1   {
-    font-size: 3em;
-    color: #000000;
-    font-family: 'HappyBirthday', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin: 0;
-    padding: 20px;
-    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .header-content {
@@ -63,61 +26,125 @@ h1   {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
     color: #6b0303;
-    font-family: 'HappyBirthday', Arial, sans-serif;        
+    font-family: 'HappyBirthday', Arial, sans-serif;
     text-shadow: 2px 2px 4px rgba(12, 12, 12, 0.3);
-    margin: 0;
     padding: 20px;
     background-color: #f5aeae;
-    border-radius: 30px;    
-    box-shadow: 0 4px 8px rgba(241, 241, 241, 0.2);
-    
-}
-
-.birthday-gif3 {
-    position: absolute; /* necessário para mover com top/left */
-    top: 380px;           /* distância do topo da página */
-    left: 200px;         /* distância da esquerda */
-
-    width: 500px;
-    height: 300px;
-    object-fit: cover;
-    max-width: 300px;
     border-radius: 30px;
 }
 
-.birthday-gif4 {
-    position: absolute; /* necessário para mover com top/left */
-    top: 380px;           /* distância do topo da página */
-    left: 1000px;         /* distância da esquerda */
+/* === TÍTULO === */
+h1 {
+    font-size: 3em;
+    color: #000000;
+    font-family: 'HappyBirthday', Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    max-width: 300px;
+/* === CONTEÚDO === */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
     border-radius: 30px;
+    font-family: 'avenue', Arial, sans-serif;
+    text-align: center;
 }
 
-@font-face {
-  font-family: 'HappyBirthday';
-  src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
-
-}
-@font-face {
-    font-family: 'avenue';
-    src: url('fonts/Avenue\ de\ Madison.ttf') format('truetype');
-}
-p{
+p {
     font-size: 2em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     color: #000000;
-    font-family: 'avenue', Arial, sans-serif;
     margin: 20px 0;
-    text-align: center;
     line-height: 1.5;
-    padding: 0 20px;       
-
-    
+    padding: 0 20px;
     border-radius: 30px;
+}
+
+/* === BALÕES FIXOS === */
+.birthday-gif,
+.birthday-gif2,
+.birthday-gif3,
+.birthday-gif4 {
+    position: fixed;
+    object-fit: cover;
+    border-radius: 30px;
+    z-index: 999;
+    max-width: 100%;
+    max-height: 100%;
+    pointer-events: none;
+}
+
+/* Superior direito */
+.birthday-gif {
+    top: 20px;
+    right: 20px;
+    width: 180px;
+    height: 180px;
+}
+
+/* Superior esquerdo */
+.birthday-gif2 {
+    top: 20px;
+    left: 20px;
+    width: 180px;
+    height: 180px;
+}
+
+/* Inferior esquerdo */
+.birthday-gif3 {
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+/* Inferior direito */
+.birthday-gif4 {
+    bottom: 20px;
+    right: 20px;
+    width: 220px;
+    height: 220px;
+}
+
+/* === FONTES PERSONALIZADAS === */
+@font-face {
+    font-family: 'HappyBirthday';
+    src: url('fonts/HappyBirthday_Demo.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'avenue';
+    src: url('fonts/Avenue de Madison.ttf') format('truetype');
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+    .birthday-gif,
+    .birthday-gif2,
+    .birthday-gif3,
+    .birthday-gif4 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .birthday-gif3,
+    .birthday-gif4 {
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
 }
