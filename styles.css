@@ -87,35 +87,30 @@ h1 {
   left: var(--site-side-gap);
 }
 
-/* 4. CONTEÚDO e GIF central */
-/* === GIF CENTRAL */
-.center-gif {
-  display: block;                     /* torna-a um bloco para margin:auto funcionar */
-  width: clamp(120px, 20vw, 260px);
-  max-width: 80%;
-  margin: 18px auto 0;                /* distancia topo e centraliza ao mesmo tempo */
-}
+/* 4. CONTEÚDO e textos */
 .content {
   background: #fff;
   border-radius: 30px;
-  padding: clamp(12px, 2.2vw, 28px);
-  margin: 20px 0;
-  position: relative;
-  overflow: visible;
+  padding: clamp(20px, 3.5vw, 40px);
+  margin: 20px 0 70px;
   text-align: center;
+  position: relative;
 }
+
 .content p {
   font-size: clamp(16px, 3vw, 32px);
   margin: 20px 0;
   line-height: 1.4;
   padding: 0 8px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.18);
+  ;
 }
 
+/* === GIF CENTRAL com correções === */
 .center-gif {
+  display: block;
   width: clamp(120px, 20vw, 260px);
-  max-width: 80%;
-  margin-top: 18px;
+  margin: clamp(12px, 4vw, 18px) auto 0 auto;
 }
 
 /* 5. BALÕES no rodapé */
@@ -162,6 +157,14 @@ h1 {
   }
 }
 
+/* Ajuste extra para telas muito estreitas */
+@media (max-width: 360px) {
+  .center-gif {
+    width: 60vw;
+    margin-top: 12px;
+  }
+}
+
 /* Font face */
 @font-face {
   font-family: 'HappyBirthday';
@@ -169,5 +172,14 @@ h1 {
 }
 @font-face {
   font-family: 'avenue';
-  src: url('fonts/Avenue de Madison.ttf') format('truetype');
+  src: url('fonts/Avenue\ de\ Madison.ttf') format('truetype');
+}
+
+p {
+  font-family: 'avenue', Arial, sans-serif;
+  font-size: clamp(16px, 3vw, 32px);
+  margin: 20px 0;
+  line-height: 1.4;
+  padding: 0 8px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.18);
 }
